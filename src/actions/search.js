@@ -1,0 +1,1 @@
+import { SEARCH_CITY } from './actionTypes';
