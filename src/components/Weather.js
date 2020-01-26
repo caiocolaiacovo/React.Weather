@@ -1,11 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Weather = () => (
+const Weather = ({city_name, temp, weather = {}}) => {
+  return (
   <div>
-    <h4>Campo Grande</h4>
-    <h6>Mostly Cloudy</h6>
-    <h1>25°</h1>
-  </div>
-);
+    <h4>{city_name}</h4>
+    <h6>{weather.description}</h6>
+    <h1>{temp}°</h1>
+  </div>);
+};
 
-export default Weather;
+const mapStateToProps = state => {
+  return state.weather;
+};
+
+export default connect(mapStateToProps)(Weather);

@@ -1,28 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import TodaysForecast from './TodaysForecast';
+import ForecastOfNextDays from './ForecastOfNextDays';
 
-const Forecast = () => (
+const Forecast = (props) => (
   <div>
-    <div>
-      11pm
-      Cloudy
-      25°
-    </div>
-    <div>
-      0am
-      Cloudy
-      25°
-    </div>
-    <div>
-      01am
-      Cloudy
-      25°
-    </div>
-    <div>
-      02am
-      Cloudy
-      25°
-    </div>
+    <TodaysForecast />
+    <ForecastOfNextDays/>
   </div>
 );
 
-export default Forecast;
+const mapStateToProps = state => {
+  return state.forecasts;
+};
+
+export default connect(mapStateToProps)(Forecast);

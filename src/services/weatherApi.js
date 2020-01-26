@@ -1,12 +1,16 @@
-import axios from '../services/axios';
+import { instance } from '../utils/axios';
 
-const getCurrentWeather = async (location) => 
-  await axios.get(`current?city=${location}`);
+const getWeather = async (location) => 
+  await instance.get(`current?city=${location}`);
 
 const getForecasts = async (location) => 
-  await axios.get(`forecast/daily?city=${location}`);
+  await instance.get(`forecast/daily?city=${location}`);
+
+const getTodaysForecast = async (location) => 
+  await instance.get(`forecast/hourly?city=${location}&hours=24`);
 
 export default {
-  getCurrentWeather,
+  getWeather,
   getForecasts,
+  getTodaysForecast
 };
