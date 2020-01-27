@@ -1,28 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const TodaysForecast = () => (
-  <div>
+const TodaysForecast = ({today}) => {
+  return (
     <div>
-      11pm
-      Cloudy
-      25°
+      Today
+      {today.map((forecast,i) => (
+        <div key={i}>
+          {forecast.timestamp_utc}
+          {forecast.weather.description}
+          {forecast.temp}
+        </div>
+      ))}
     </div>
-    <div>
-      0am
-      Cloudy
-      25°
-    </div>
-    <div>
-      01am
-      Cloudy
-      25°
-    </div>
-    <div>
-      02am
-      Cloudy
-      25°
-    </div>
-  </div>
-);
+  );
+};
 
-export default TodaysForecast;
+const mapStateToProps = state => {
+  return state.forecast
+}
+
+export default connect(mapStateToProps)(TodaysForecast);

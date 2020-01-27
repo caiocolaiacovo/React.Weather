@@ -1,5 +1,8 @@
 export default {
   weather: {},
-  forecasts: [],
+  forecast: {
+    today: [],
+    nextDays: []
+  },
   requestCount: 0,
 };

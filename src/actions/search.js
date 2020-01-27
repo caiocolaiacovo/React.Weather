@@ -1,4 +1,4 @@
-import { RECEIVE_WEATHER, RECEIVE_WEATHER_FORECASTS } from './actionTypes';
+import { RECEIVE_WEATHER, RECEIVE_FORECAST } from './actionTypes';
 import weatherApi from '../services/weatherApi';
 
 const receiveWeather = weather => ({
@@ -6,8 +6,8 @@ const receiveWeather = weather => ({
   weather
 });
 
-const receiveWeatherForecasts = forecasts => ({
-  type: RECEIVE_WEATHER_FORECASTS,
+const receiveForecast = forecasts => ({
+  type: RECEIVE_FORECAST,
   forecasts
 });
 
@@ -15,15 +15,15 @@ export const searchByCity = location =>
   async dispatch => {
     //TODO: Refactor using Promise.all
     const weatherResponse = await weatherApi.getWeather(location);
-    const nextDaysForecast = await weatherApi.getForecasts(location);
+    const nextDaysForecastResponse = await weatherApi.getNextDaysForecast(location);
     const todaysForecastResponse = await weatherApi.getTodaysForecast(location);
 
     const weather = weatherResponse.data.data[0];
-    const forecasts = {
-      nextDaysForecast: nextDaysForecast.data.data,
-      today: todaysForecastResponse.data.data[0]
+    const forecast = {
+      today: todaysForecastResponse.data.data,
+      nextDays: nextDaysForecastResponse.data.data,
     }
 
     dispatch(receiveWeather(weather));
-    dispatch(receiveWeatherForecasts(forecasts));
+    dispatch(receiveForecast(forecast));
   };

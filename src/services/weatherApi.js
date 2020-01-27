@@ -3,7 +3,7 @@ import { instance } from '../utils/axios';
 const getWeather = async (location) => 
   await instance.get(`current?city=${location}`);
 
-const getForecasts = async (location) => 
+const getNextDaysForecast = async (location) => 
   await instance.get(`forecast/daily?city=${location}`);
 
 const getTodaysForecast = async (location) => 
@@ -11,6 +11,6 @@ const getTodaysForecast = async (location) =>
 
 export default {
   getWeather,
-  getForecasts,
+  getNextDaysForecast,
   getTodaysForecast
 };

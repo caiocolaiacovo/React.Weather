@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import weather from './weather';
-import weatherForecasts from './weatherForecasts';
+import forecast from './forecast';
 import loading from './loading';
 
 const rootReducer = combineReducers({
   weather,
-  weatherForecasts,
+  forecast,
   loading,
 });
 

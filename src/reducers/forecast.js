@@ -1,9 +1,9 @@
 import initialState from './initialState';
-import { RECEIVE_WEATHER_FORECASTS } from '../actions/actionTypes';
+import { RECEIVE_FORECAST } from '../actions/actionTypes';
 
-const weatherForecasts = (state = initialState.forecasts, action) => {
+const weatherForecasts = (state = initialState.forecast, action) => {
   switch (action.type) {
-    case RECEIVE_WEATHER_FORECASTS:
+    case RECEIVE_FORECAST:
       return {
         ...action.forecasts
       };
