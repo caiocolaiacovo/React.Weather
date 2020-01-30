@@ -11,7 +11,7 @@ const Forecast = (props) => (
 );
 
 const mapStateToProps = state => {
-  return state.forecasts;
+  return state.forecast;
 };
 
 export default connect(mapStateToProps)(Forecast);

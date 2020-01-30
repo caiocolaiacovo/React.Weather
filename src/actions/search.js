@@ -6,9 +6,9 @@ const receiveWeather = weather => ({
   weather
 });
 
-const receiveForecast = forecasts => ({
+const receiveForecast = forecast => ({
   type: RECEIVE_FORECAST,
-  forecasts
+  forecast
 });
 
 export const searchByCity = location => 
@@ -19,8 +19,12 @@ export const searchByCity = location =>
     const todaysForecastResponse = await weatherApi.getTodaysForecast(location);
 
     const weather = weatherResponse.data.data[0];
+    const { timezone, data } = todaysForecastResponse.data;
     const forecast = {
-      today: todaysForecastResponse.data.data,
+      today: {
+        timezone,
+        data,
+      },
       nextDays: nextDaysForecastResponse.data.data,
     }
 

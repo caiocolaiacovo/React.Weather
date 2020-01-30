@@ -1,8 +1,11 @@
 export default {
   weather: {},
   forecast: {
-    today: [],
-    nextDays: []
+    today: {
+      timezone: '',
+      data: [],
+    },
+    nextDays: [],
   },
   requestCount: 0,
 };
