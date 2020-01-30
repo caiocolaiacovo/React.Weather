@@ -18,6 +18,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "start-win": "copy env.dev.js public\\env.js && react-scripts start",
     "start": "cp env.dev.js public/env.js && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
