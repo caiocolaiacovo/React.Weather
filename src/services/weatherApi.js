@@ -8,7 +8,7 @@ const getNextDaysForecast = async (location) =>
 
 const getTodaysForecast = async (location) => 
   await instance.get(`forecast/hourly?city=${location}&hours=24`);
-
+  
 export default {
   getWeather,
   getNextDaysForecast,

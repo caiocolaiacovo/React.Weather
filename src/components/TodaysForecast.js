@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 const getForecast = (forecast,i) => {
-  const data = moment(forecast.timestamp_local);
+  const time = moment(forecast.time);
 
   return (
     <div key={i}>
-      <p>{data.format('ha')}</p>
-      <p>{forecast.weather.description}</p>
-      <p>{forecast.temp}</p>
+      <p>{time.format('ha')}</p>
+      <p>{forecast.description}</p>
+      <p>{forecast.temperature}</p>
     </div>
   );
 };
 
-const TodaysForecast = ({data}) => (
+const TodaysForecast = ({today}) => (
   <div>
     Today
     <section style={{
@@ -24,13 +24,15 @@ const TodaysForecast = ({data}) => (
       flexDirection: 'row',
       overflowX: 'auto'
     }}>
-    {data.map(getForecast)}
+    {today.map(getForecast)}
     </section>
   </div>
 );
 
 const mapStateToProps = state => {
-  return state.forecast.today
-}
+  return {
+    today: state.forecast.today,
+  };
+};
 
 export default connect(mapStateToProps)(TodaysForecast);
