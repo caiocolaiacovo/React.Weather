@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Weather = ({city_name, temp, weather = {}}) => {
+const Weather = ({cityName, description, temperature}) => {
   return (
   <div>
-    <h4>{city_name}</h4>
-    <h6>{weather.description}</h6>
-    <h1>{temp}°</h1>
+    <h4>{cityName}</h4>
+    <h6>{description}</h6>
+    <h1>{temperature}°</h1>
   </div>);
 };
 

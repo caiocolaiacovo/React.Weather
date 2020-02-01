@@ -7,10 +7,11 @@ const ForecastOfNextDays = ({nextDays}) => (
     Next days:
     {!!nextDays && nextDays.map(a => (
       <div>
-        {moment(a.valid_date).format('dddd')}
-        <div>{a.weather.description}</div>
-        <div>Mínima: {a.low_temp}</div>
-        <div>Máxima: {a.max_temp}</div>
+        {moment(a.date).format('dddd')}
+        <div>{a.description}</div>
+        <div>Mínima: {a.minimumTemperature}</div>
+        <div>Média: {a.temperature}</div>
+        <div>Máxima: {a.maximumTemperature}</div>
       </div>
     ))}
   </div>

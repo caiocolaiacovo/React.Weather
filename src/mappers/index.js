@@ -6,13 +6,21 @@ const weatherMapper = ({city_name, weather, temp}) => ({
 
 const forecastMapper = (today, nextDays) => ({
   today: today.map(todayForecastMapper),
-  nextDays,
+  nextDays: nextDays.map(nextDayForecastMapper),
 });
 
 const todayForecastMapper = (forecast) => ({
   time: forecast.timestamp_local,
   description: forecast.weather.description,
   temperature: forecast.temp,
+});
+
+const nextDayForecastMapper = (forecast) => ({
+  temperature: forecast.temp,
+  maximumTemperature: forecast.max_temp,
+  minimumTemperature: forecast.min_temp,
+  description: forecast.weather.description,
+  date: forecast.valid_date
 });
 
 export {
