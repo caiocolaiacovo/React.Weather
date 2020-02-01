@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import moment from 'moment';
 
 const getForecast = (forecast,i) => {
@@ -14,7 +13,7 @@ const getForecast = (forecast,i) => {
   );
 };
 
-const TodaysForecast = ({today}) => (
+const TodaysForecast = ({forecast}) => (
   <div>
     Today
     <section style={{
@@ -24,15 +23,9 @@ const TodaysForecast = ({today}) => (
       flexDirection: 'row',
       overflowX: 'auto'
     }}>
-    {today.map(getForecast)}
+    {forecast.map(getForecast)}
     </section>
   </div>
 );
 
-const mapStateToProps = state => {
-  return {
-    today: state.forecast.today,
-  };
-};
-
-export default connect(mapStateToProps)(TodaysForecast);
+export default TodaysForecast;

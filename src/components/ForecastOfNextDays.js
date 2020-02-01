@@ -1,11 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import moment from 'moment';
 
-const ForecastOfNextDays = ({nextDays}) => (
+const ForecastOfNextDays = ({forecast}) => (
   <div>
     Next days:
-    {!!nextDays && nextDays.map(a => (
+    {!!forecast && forecast.map(a => (
       <div>
         {moment(a.date).format('dddd')}
         <div>{a.description}</div>
@@ -17,11 +16,4 @@ const ForecastOfNextDays = ({nextDays}) => (
   </div>
 );
 
-const mapStateToProps = state => {
-  console.log(state);
-  return {
-    nextDays: state.forecast.nextDays
-  };
-};
-
-export default connect(mapStateToProps)(ForecastOfNextDays);
+export default ForecastOfNextDays;

@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import TodaysForecast from './TodaysForecast';
 import ForecastOfNextDays from './ForecastOfNextDays';
 
-const Forecast = (props) => (
+const Forecast = ({today, nextDays}) => (
   <div>
-    <TodaysForecast />
-    <ForecastOfNextDays/>
+    <TodaysForecast forecast={today}/>
+    <ForecastOfNextDays forecast={nextDays}/>
   </div>
 );
 
