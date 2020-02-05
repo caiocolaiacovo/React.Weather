@@ -15,7 +15,7 @@ const getForecast = (forecast,i) => {
 
 const TodaysForecast = ({forecast}) => (
   <div>
-    Today
+    <International id='todaysforecast.header' />
     <section style={{
       margin: '0 auto', 
       display: 'flex', 
@@ -26,6 +26,10 @@ const TodaysForecast = ({forecast}) => (
     {forecast.map(getForecast)}
     </section>
   </div>
+);
+
+const International = (props) => (
+  <div>Teste</div>
 );
 
 export default TodaysForecast;

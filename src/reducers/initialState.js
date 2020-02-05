@@ -1,3 +1,7 @@
+const LANGUAGES = {
+  ENGLISH: 'en'
+};
+
 export default {
   weather: {},
   forecast: {
@@ -5,4 +9,5 @@ export default {
     nextDays: [],
   },
   requestCount: 0,
+  language: LANGUAGES.ENGLISH,
 };
