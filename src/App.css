@@ -1,0 +1,64 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+}
+
+#root{
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: #282c34;
+  height: 50px;
+  color: white;
+}
+
+.header__container {
+  display: flex;
+  flex: 1;
+  max-width: 800px;
+  align-items: center;
+}
+
+.header__logo {
+  flex-grow: 0;
+  font-size: 30px;
+}
+
+.header__search-form {
+  flex-grow: 1;
+  display: flex;
+  margin-left: 30px;
+  height: 100%;
+  align-items: center;
+}
+
+.header__search-form input {
+  flex-grow: 1;
+  background-color: #282c34;
+  color: white;
+  border: none;
+  border-bottom: 2px solid white;
+  height: 75%;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.header__search-form input:focus {
+  outline: none;
+}
+
+.header__search-form button {
+  flex-grow: 0;
+  border: white;
+  color: white;
+  height: 75%;
+  background-color: #282c34;
+  border: 2px solid white;
+  margin-left: 20px;
+}

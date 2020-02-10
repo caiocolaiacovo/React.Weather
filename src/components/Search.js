@@ -4,24 +4,29 @@ import { searchByCity } from '../actions/search';
 import { Formik } from 'formik';
 
 const Search = (props) => (
-  <Formik
-    initialValues={{ city: '' }}
-    onSubmit={(values) => {
-      props.searchByCity(values.city);
-    }}>
-    {props => (
-      <form onSubmit={props.handleSubmit}>
-        Enter your city:
-        <input
-          type='text'
-          onChange={props.handleChange}
-          onBlur={props.handleBlur}
-          value={props.values.city}
-          name='city'/>
-        <button type='submit'>Search</button>
-      </form>
-    )}
-  </Formik>
+  <header className='header'>
+    <div className='header__container'>
+      <div className='header__logo'>React Weather</div>
+      <Formik
+        initialValues={{ city: '' }}
+        onSubmit={(values) => {
+          props.searchByCity(values.city);
+        }}>
+        {props => (
+          <form onSubmit={props.handleSubmit} className='header__search-form'>
+            <input
+              type='text'
+              onChange={props.handleChange}
+              onBlur={props.handleBlur}
+              value={props.values.city}
+              name='city'
+              placeholder='Enter your city'/>
+            <button type='submit'>Search</button>
+          </form>
+        )}
+      </Formik>
+    </div>
+  </header>
 );
 
 const mapDispatchToProps = dispatch => ({

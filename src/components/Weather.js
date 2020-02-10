@@ -11,7 +11,6 @@ const Weather = ({cityName, description, temperature}) => {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
   return state.weather;
 };
 
