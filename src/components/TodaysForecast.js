@@ -14,12 +14,11 @@ const getForecast = (forecast,i) => {
 };
 
 const TodaysForecast = ({forecast}) => (
-  <div>
-    <International id='todaysforecast.header' />
+  <div className='forecast__todays-forecast'>
+    {/* <International id='todaysforecast.header' /> */}
     <section style={{
       margin: '0 auto', 
-      display: 'flex', 
-      border: '1px solid #ccc',
+      display: 'flex',
       flexDirection: 'row',
       overflowX: 'auto'
     }}>

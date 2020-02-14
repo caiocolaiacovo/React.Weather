@@ -14,7 +14,8 @@ function App() {
       backgroundAttachment: 'fixed',
       overflow: 'auto',
       color: 'white',
-      textShadow: '2px 1px 4px #000'}}>
+      textShadow: '2px 1px 4px #000',
+      fontFamily: 'Arial, Helvetica, sans-serif'}}>
       <Search/>
       <Weather/>
       <Forecast/>

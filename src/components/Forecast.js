@@ -4,7 +4,7 @@ import TodaysForecast from './TodaysForecast';
 import ForecastOfNextDays from './ForecastOfNextDays';
 
 const Forecast = ({today, nextDays}) => (
-  <div>
+  <div className='forecast'>
     <TodaysForecast forecast={today}/>
     <ForecastOfNextDays forecast={nextDays}/>
   </div>
