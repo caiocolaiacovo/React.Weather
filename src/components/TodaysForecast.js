@@ -1,29 +1,26 @@
 import React from 'react';
 import moment from 'moment';
 
-const getForecast = (forecast,i) => {
+const getForecast = (forecast, i) => {
   const time = moment(forecast.time);
 
   return (
-    <div key={i}>
-      <p>{time.format('ha')}</p>
-      <p>{forecast.description}</p>
-      <p>{forecast.temperature}</p>
+    <div className='todays-forecast__item' key={i}>
+      <p>{time.format('h a')}</p>
+      <img alt='weather icon' className='todays-forecast__icon' src={`https://www.weatherbit.io/static/img/icons/${forecast.icon}.png`}/>
+      <p className='todays-forecast__description'>{forecast.description}</p>
+      <p>{parseInt(forecast.temperature)}°</p>
     </div>
   );
 };
 
 const TodaysForecast = ({forecast}) => (
   <div className='forecast__todays-forecast'>
-    {/* <International id='todaysforecast.header' /> */}
-    <section style={{
-      margin: '0 auto', 
-      display: 'flex',
-      flexDirection: 'row',
-      overflowX: 'auto'
-    }}>
-    {forecast.map(getForecast)}
-    </section>
+    <p className='todays-forecast__title'>Next 24 hours</p>
+    <div className='todays-forecast__container'>
+      {/* <International id='todaysforecast.header' /> */}
+      {forecast.map(getForecast)}
+    </div>
   </div>
 );
 

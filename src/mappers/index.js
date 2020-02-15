@@ -12,6 +12,7 @@ const forecastMapper = (today, nextDays) => ({
 const todayForecastMapper = (forecast) => ({
   time: forecast.timestamp_local,
   description: forecast.weather.description,
+  icon: forecast.weather.icon,
   temperature: forecast.temp,
 });
 
