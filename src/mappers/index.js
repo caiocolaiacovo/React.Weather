@@ -21,6 +21,7 @@ const nextDayForecastMapper = (forecast) => ({
   maximumTemperature: forecast.max_temp,
   minimumTemperature: forecast.min_temp,
   description: forecast.weather.description,
+  icon: forecast.weather.icon,
   date: forecast.valid_date
 });
 

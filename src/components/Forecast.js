@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import TodaysForecast from './TodaysForecast';
-import ForecastOfNextDays from './ForecastOfNextDays';
+import NextDaysForecast from './NextDaysForecast';
 
 const Forecast = ({today, nextDays}) => (
   <div className='forecast'>
     <TodaysForecast forecast={today}/>
-    <ForecastOfNextDays forecast={nextDays}/>
+    <NextDaysForecast forecast={nextDays}/>
   </div>
 );
 

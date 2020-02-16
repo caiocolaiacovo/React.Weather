@@ -16,7 +16,7 @@ const getForecast = (forecast, i) => {
 
 const TodaysForecast = ({forecast}) => (
   <div className='forecast__todays-forecast'>
-    <p className='todays-forecast__title'>Next 24 hours</p>
+    <p className='todays-forecast__title'>Today</p>
     <div className='todays-forecast__container'>
       {/* <International id='todaysforecast.header' /> */}
       {forecast.map(getForecast)}
@@ -25,7 +25,7 @@ const TodaysForecast = ({forecast}) => (
 );
 
 const International = (props) => (
-  <div>Teste</div>
+  <>Teste</>
 );
 
 export default TodaysForecast;
