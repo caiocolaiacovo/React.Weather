@@ -1,7 +1,9 @@
-const weatherMapper = ({city_name, weather, temp}) => ({
+const weatherMapper = ({city_name, weather, temp, pod}) => ({
   cityName: city_name,
   description: weather.description,
-  temperature: temp
+  temperature: temp,
+  code: weather.code,
+  partOfTheDay: pod
 });
 
 const forecastMapper = (today, nextDays) => ({
