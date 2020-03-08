@@ -1,1 +1,0 @@
-https://weatherstack.com/
