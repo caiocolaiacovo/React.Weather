@@ -14,13 +14,15 @@ const receiveForecast = forecast => ({
 
 export const searchByCity = location => 
   async dispatch => {
-    //TODO: Refactor using Promise.all
-    const weatherResponse = await weatherApi.getWeather(location);
-    const nextDaysForecastResponse = await weatherApi.getNextDaysForecast(location);
-    const todaysForecastResponse = await weatherApi.getTodaysForecast(location);
+    const currentWeatherResponse = await weatherApi.getCurrentWeather(location);
+    const { lon, lat } = currentWeatherResponse.data.coord;
 
-    const weather = weatherMapper(weatherResponse.data.data[0]);
-    const forecast = forecastMapper(todaysForecastResponse.data.data, nextDaysForecastResponse.data.data);
+    const forecastsResponse = await weatherApi.getForecasts(lon, lat);
+    const todaysForecast = forecastsResponse.data.hourly.slice(1, 25);
+    const nextDaysForecasts = forecastsResponse.data.daily;
+
+    const weather = weatherMapper(currentWeatherResponse.data);
+    const forecast = forecastMapper(todaysForecast, nextDaysForecasts);
 
     dispatch(receiveWeather(weather));
     dispatch(receiveForecast(forecast));

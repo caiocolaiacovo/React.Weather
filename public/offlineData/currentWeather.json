@@ -1,0 +1,45 @@
+{
+  "data": {
+    "coord": {
+      "lon": -43.21,
+      "lat": -22.9
+    },
+    "weather": [
+      {
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01d"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 27.45,
+      "feels_like": 28.9,
+      "temp_min": 27,
+      "temp_max": 28,
+      "pressure": 1015,
+      "humidity": 54
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 1.5,
+      "deg": 340
+    },
+    "clouds": {
+      "all": 0
+    },
+    "dt": 1593976943,
+    "sys": {
+      "type": 1,
+      "id": 8429,
+      "country": "BR",
+      "sunrise": 1593941647,
+      "sunset": 1593980431
+    },
+    "timezone": -10800,
+    "id": 3451190,
+    "name": "Rio de Janeiro",
+    "cod": 200
+  }
+}

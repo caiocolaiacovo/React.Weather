@@ -9,7 +9,7 @@ export const configureInterceptors = (axios, store) => {
   axios.interceptors.request.use(
     config => {
       store.dispatch({type: BEGIN_AJAX_REQUEST});
-      config.url = `${config.url}&key=${window.__environment.API_KEY}`;
+      config.url = `${config.url}&appid=${window.__environment.API_KEY}&units=metric`;
       return config;
     }, error => {
       store.dispatch({type: END_AJAX_REQUEST});

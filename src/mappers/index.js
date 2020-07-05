@@ -1,7 +1,7 @@
-const weatherMapper = ({city_name, weather, temp, pod}) => ({
-  cityName: city_name,
-  description: weather.description,
-  temperature: temp,
+const weatherMapper = ({name, weather, main, pod}) => ({
+  cityName: name,
+  description: weather[0].main,
+  temperature: main.temp,
   code: weather.code,
   partOfTheDay: pod
 });
@@ -12,19 +12,19 @@ const forecastMapper = (today, nextDays) => ({
 });
 
 const todayForecastMapper = (forecast) => ({
-  time: forecast.timestamp_local,
-  description: forecast.weather.description,
-  icon: forecast.weather.icon,
+  time: forecast.dt,
+  description: forecast.weather[0].description,
+  icon: forecast.weather[0].icon,
   temperature: forecast.temp,
 });
 
 const nextDayForecastMapper = (forecast) => ({
-  temperature: forecast.temp,
-  maximumTemperature: forecast.max_temp,
-  minimumTemperature: forecast.min_temp,
-  description: forecast.weather.description,
-  icon: forecast.weather.icon,
-  date: forecast.valid_date
+  temperature: forecast.temp.day,
+  maximumTemperature: forecast.temp.max,
+  minimumTemperature: forecast.temp.min,
+  description: forecast.weather[0].description,
+  icon: forecast.weather[0].icon,
+  date: forecast.dt
 });
 
 export {

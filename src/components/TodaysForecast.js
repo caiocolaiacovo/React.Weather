@@ -2,12 +2,12 @@ import React from 'react';
 import moment from 'moment';
 
 const getForecast = (forecast, i) => {
-  const time = moment(forecast.time);
+  const time = moment.unix(forecast.time);
 
   return (
     <div className='todays-forecast__item' key={i}>
       <p>{time.format('h a')}</p>
-      <img alt='weather icon' className='todays-forecast__icon' src={`https://www.weatherbit.io/static/img/icons/${forecast.icon}.png`}/>
+      <img alt='weather icon' className='todays-forecast__icon' src={`http://openweathermap.org/img/wn/${forecast.icon}.png`}/>
       <p className='todays-forecast__description'>{forecast.description}</p>
       <p>{parseInt(forecast.temperature)}°</p>
     </div>

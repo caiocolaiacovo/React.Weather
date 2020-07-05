@@ -5,14 +5,16 @@ const NextDaysForecast = ({forecast}) => (
   <div className='forecast__next-days-forecast'>
     <p className='next-days-forecast__title'>Next days</p>
     <div className='next-days-forecast__container'>
-      {!!forecast && forecast.map(a => (
-        <div className='next-days-forecast__item'>
+      {!!forecast && forecast.map(a => {
+        const time = moment.unix(a.date);
+        return (
+        <div key={a.date} className='next-days-forecast__item'>
           <p className='next-days-forecast__day'>
-            {moment(a.date).format('dddd')}
+            {time.format('dddd')}
           </p>
           <div className='next-days-forecast__weather'>
             <img alt='weather icon' className='next-days-forecast__icon' 
-              src={`https://www.weatherbit.io/static/img/icons/${a.icon}.png`}/>
+              src={`http://openweathermap.org/img/wn/${a.icon}.png`}/>
             <p>{a.description}</p>
           </div>
           <div className='next-days-forecast__temperatures'>
@@ -27,7 +29,7 @@ const NextDaysForecast = ({forecast}) => (
             </p>
           </div>
         </div>
-      ))}
+      )})}
     </div>
   </div>
 );

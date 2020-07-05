@@ -1,16 +1,34 @@
 import { instance } from '../utils/axios';
 
-const getWeather = async (location) => 
-  await instance.get(`current?city=${location}`);
+const getCurrentWeather = async (location) =>
+  await instance.get(`weather?q=${location}`);
 
-const getNextDaysForecast = async (location) => 
-  await instance.get(`forecast/daily?city=${location}`);
+// I hope that OpenWeather API still works, so you are not gonna need this =(
+// Or use this method if you only want to test it.
+const getCurrentWeatherOffline = async () => {
+  const response = await (await fetch('offlineData/currentWeather.json')).json();
 
-const getTodaysForecast = async (location) => 
-  await instance.get(`forecast/hourly?city=${location}&hours=24`);
-  
+  return new Promise((resolve, _) => {
+    resolve(response)
+  });
+}
+
+const getForecasts = async (lon, lat) =>
+  await instance.get(`onecall?lat=${lat}&lon=${lon}&exclude=current,minutely`);
+
+// I hope that OpenWeather API still works, so you are not gonna need this =(
+// Or use this method if you only want to test it.
+const getForecastsOffline = async () => {
+  const response = await (await fetch('offlineData/forecasts.json')).json();
+
+  return new Promise((resolve, _) => {
+    resolve(response)
+  });
+}
+
 export default {
-  getWeather,
-  getNextDaysForecast,
-  getTodaysForecast
+  getCurrentWeather,
+  getCurrentWeatherOffline,
+  getForecasts,
+  getForecastsOffline
 };
