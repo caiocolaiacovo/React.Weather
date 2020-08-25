@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { instance, configureInterceptors } from './utils/axios';
 
-configureInterceptors(instance, store);
+configureInterceptors(instance, store.dispatch);
 
 ReactDOM.render(
   <Provider store={store}>

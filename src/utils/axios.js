@@ -5,25 +5,25 @@ export const instance = axios.create({
   baseURL: window.__environment.BASE_URL
 });
 
-export const configureInterceptors = (axios, store) => {
+export const configureInterceptors = (axios, dispatch) => {
   axios.interceptors.request.use(
     config => {
-      store.dispatch({type: BEGIN_AJAX_REQUEST});
+      dispatch({type: BEGIN_AJAX_REQUEST});
       config.url = `${config.url}&appid=${window.__environment.API_KEY}&units=metric`;
       return config;
     }, error => {
-      store.dispatch({type: END_AJAX_REQUEST});
+      dispatch({type: END_AJAX_REQUEST});
       return Promise.reject(error);
     }
   );
   
   axios.interceptors.response.use(
     response => {
-      store.dispatch({type: END_AJAX_REQUEST});
+      dispatch({type: END_AJAX_REQUEST});
       return response
     }, 
     error => {
-      store.dispatch({type: END_AJAX_REQUEST});
+      dispatch({type: END_AJAX_REQUEST});
       return Promise.reject(error);
     }
   );

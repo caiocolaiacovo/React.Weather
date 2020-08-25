@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import { forecastMapper } from '../mappers';
 
 const getForecast = (forecast, i) => {
   const time = moment.unix(forecast.time);
@@ -14,15 +15,19 @@ const getForecast = (forecast, i) => {
   );
 };
 
-const TodaysForecast = ({forecast}) => (
-  <div className='forecast__todays-forecast'>
-    <p className='todays-forecast__title'>Today</p>
-    <div className='todays-forecast__container'>
-      {/* <International id='todaysforecast.header' /> */}
-      {forecast.map(getForecast)}
+const TodaysForecast = ({forecast}) => {
+  forecast = forecast.slice(1, 25);
+
+  return (
+    <div className='forecast__todays-forecast'>
+      <p className='todays-forecast__title'>Today</p>
+      <div className='todays-forecast__container'>
+        {/* <International id='todaysforecast.header' /> */}
+        {forecast.map(getForecast)}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const International = (props) => (
   <>Teste</>

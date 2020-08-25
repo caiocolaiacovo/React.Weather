@@ -8,7 +8,7 @@ import './App.css';
 function App() {
   return (
     <div className='app'>
-      <BackgroundPicture />
+      {/* <BackgroundPicture /> */}
       <Search/>
       <Weather/>
       <Forecast/>

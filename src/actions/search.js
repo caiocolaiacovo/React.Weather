@@ -1,6 +1,6 @@
 import { RECEIVE_WEATHER, RECEIVE_FORECAST } from './actionTypes';
-import weatherApi from '../services/weatherApi';
-import { weatherMapper, forecastMapper } from '../mappers';
+import weatherApi from 'services/weatherApi';
+import { weatherMapper, forecastMapper } from 'mappers';
 
 const receiveWeather = weather => ({
   type: RECEIVE_WEATHER,
@@ -12,21 +12,14 @@ const receiveForecast = forecast => ({
   forecast
 });
 
-export const searchByCity = location => 
+export const searchByCity = cityName => 
   async dispatch => {
-    const currentWeatherResponse = await weatherApi.getCurrentWeather(location);
-    const { lon, lat } = currentWeatherResponse.data.coord;
+    const weatherResponse = await weatherApi.getWeather(cityName);
+    const weather = weatherMapper(weatherResponse.data);
 
-    const forecastsResponse = await weatherApi.getForecasts(lon, lat);
-    const todaysForecast = forecastsResponse.data.hourly.slice(1, 25);
-    const nextDaysForecasts = forecastsResponse.data.daily;
-
-    const weather = weatherMapper(currentWeatherResponse.data);
-    const forecast = forecastMapper(todaysForecast, nextDaysForecasts);
+    const forecastResponse = await weatherApi.getForecast(weather.coordinates);
+    const forecast = forecastMapper(forecastResponse.data);
 
     dispatch(receiveWeather(weather));
     dispatch(receiveForecast(forecast));
   };
-
-
-

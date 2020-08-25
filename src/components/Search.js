@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { searchByCity } from '../actions/search';
+import { searchByCity } from 'actions/search';
 import { Formik } from 'formik';
 
 const Search = (props) => (
@@ -29,8 +29,13 @@ const Search = (props) => (
   </header>
 );
 
-const mapDispatchToProps = dispatch => ({
-  searchByCity: city => dispatch(searchByCity(city)),
-});
+const mapDispatchToProps = dispatch => {
+  console.log('dispatch ', dispatch);
+  console.log('searchByCity ', searchByCity);
+  console.log('dispatch === searchByCity ', dispatch === searchByCity);
+  return {
+    searchByCity: city => dispatch(searchByCity(city)),
+  }
+};
 
 export default connect(null, mapDispatchToProps)(Search);
