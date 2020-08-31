@@ -29,13 +29,8 @@ const Search = (props) => (
   </header>
 );
 
-const mapDispatchToProps = dispatch => {
-  console.log('dispatch ', dispatch);
-  console.log('searchByCity ', searchByCity);
-  console.log('dispatch === searchByCity ', dispatch === searchByCity);
-  return {
+const mapDispatchToProps = dispatch => ({
     searchByCity: city => dispatch(searchByCity(city)),
-  }
-};
+});
 
 export default connect(null, mapDispatchToProps)(Search);

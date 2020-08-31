@@ -2,37 +2,35 @@ import React from 'react'
 import {render, fireEvent, screen, wait } from '@testing-library/react'
 import Search from './Search';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-const mockDispatch = jest.fn(() => console.log('dentro do dispatch'));
-jest.mock('actions/search', () => {
-  return {
-    searchByCity: jest.fn().mockImplementation(() => {
-      return mockDispatch;
-    }),
-  }
+let store;
+const mockStore = configureStore([thunk]);
+const mockActionResult = jest.fn();
+const mockActionSearchByCity = jest.fn(() => mockActionResult);
+jest.mock('actions/search', () => ({
+    searchByCity: (city) => mockActionSearchByCity(city),
+  })
+);
+
+beforeEach(() => {
+  const initialState = {};
+  store = mockStore(initialState);
+  store.dispatch = jest.fn();
 });
 
-const mockStore = configureStore([thunk]);
-
-it('teste', async () => {
-  const initialState = {};
-  const store = mockStore(initialState)
-  store.dispatch = jest.fn().mockImplementation(() => console.log('dispatch'));
-  const wrapper = <Provider store={store}><Search /></Provider>
-  render(wrapper);
+it('Should dispatch action to search city when search button is clicked', async () => {
+  render(<Provider store={store}><Search /></Provider>);
   const button = screen.getByText('Search');
   const input = screen.getByPlaceholderText('Enter your city');
-  fireEvent.change(input, { target: { value: 'Campo Grande, MS, Brazil' } })
-  
+  const cityName = 'Campo Grande, MS, Brazil';
+  fireEvent.change(input, { target: { value: cityName } });
+
   await wait(() => {
     fireEvent.click(button);
   });
 
-  console.log(store.dispatch.mock.calls);
-  console.log(mockDispatch.mock.calls);
-
-  // // console.log(screen.getByText('Search'));
-  // console.log(store.getActions());
+  expect(mockActionSearchByCity).toHaveBeenCalledWith(cityName);
+  expect(store.dispatch).toHaveBeenCalledWith(mockActionResult);
 });
