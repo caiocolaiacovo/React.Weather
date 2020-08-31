@@ -1,6 +1,6 @@
 import { weatherMapper, forecastMapper } from './index';
 
-describe('Mappers', () => {
+describe('Weather mapper', () => {
   it('Should map weather', () => {
     const weatherDto = {
       name: 'Campo Grande, MS, Brazil', 
@@ -11,8 +11,7 @@ describe('Mappers', () => {
       ], 
       main: {
         temp: 30
-      }, 
-      pod: 'd', 
+      },
       coord: {
         lat: -20.46,
         lon: -54.62
@@ -23,7 +22,6 @@ describe('Mappers', () => {
       description: weatherDto.weather[0].main,
       temperature: weatherDto.main.temp,
       code: weatherDto.weather.code,
-      partOfTheDay: weatherDto.pod,
       coordinates: weatherDto.coord
     }
 
@@ -31,7 +29,9 @@ describe('Mappers', () => {
 
     expect(weather).toMatchObject(expectedWeather);
   });
+});
 
+describe('Forecast mappers', () => {
   it("Should map today's forecast", () => {
     const forecastDto = {
       hourly: [
