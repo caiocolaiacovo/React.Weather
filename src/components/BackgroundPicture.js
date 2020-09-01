@@ -1,22 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import conditionCodes from 'services/weatherConditionCodes';
 
-const thunderstormCodes = {
-  200: 'thundestorm',
-  201: 'thundestorm',
-  202: 'thundestorm',
-  230: 'thundestorm',
-  231: 'thundestorm',
-  232: 'thundestorm',
-  233: 'thundestorm',
-  
+const getPartyOfTheDay = () => {
+  const currentDate = new Date();
+  const hour = currentDate.getHours();
+
+  if (hour >= 6 && hour < 18)
+    return 'day';
+
+  return 'night';
 };
 
-const BackgroundPicture = ({code, partOfTheDay}) => {
+const getImageName = (code) => {
+  console.log(JSON.stringify(conditionCodes));
+  return conditionCodes[code];
+}
+
+const BackgroundPicture = ({ code }) => {
+  const partOfTheDay = getPartyOfTheDay();
+  const imageName = getImageName(code);
+  const style = {
+    backgroundImage: `url("/photos/${imageName}_${partOfTheDay}.jpg")`
+  };
+  
   return (
-    <div className='background-picture' style={{
-      backgroundImage: `url("/photos/thunderstorm_${partOfTheDay === 'd' ? 'day' : 'night'}.jpg")`
-      }}></div>
+    <div
+      className={`background-picture ${imageName ? 'background-picture__visible' : ''}`}
+      style={style}>
+    </div>
   );
 };
 

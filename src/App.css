@@ -4,6 +4,7 @@ html, body {
 
 body {
   margin: 0px;
+  background-color: #4c4c4c;
 }
 
 #root{
@@ -25,6 +26,12 @@ body {
   overflow: auto;
   z-index: -1;
   position: fixed;
+  opacity:0%;
+}
+
+.background-picture__visible {
+  opacity:100%;
+  transition:opacity 0.5s
 }
 
 .header {
