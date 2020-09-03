@@ -1,24 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import conditionCodes from 'services/weatherConditionCodes';
+import moment from 'moment';
 
-const getPartyOfTheDay = () => {
-  const currentDate = new Date();
-  const hour = currentDate.getHours();
-
+const getPartOfTheDay = () => {
+  const hour = moment().hour();
+  
   if (hour >= 6 && hour < 18)
     return 'day';
 
   return 'night';
 };
 
-const getImageName = (code) => {
-  console.log(JSON.stringify(conditionCodes));
-  return conditionCodes[code];
-}
+const getImageName = (code) => conditionCodes[code];
 
 const BackgroundPicture = ({ code }) => {
-  const partOfTheDay = getPartyOfTheDay();
+  const partOfTheDay = getPartOfTheDay();
   const imageName = getImageName(code);
   const style = {
     backgroundImage: `url("/photos/${imageName}_${partOfTheDay}.jpg")`
